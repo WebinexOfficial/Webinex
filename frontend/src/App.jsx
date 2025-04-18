@@ -1,14 +1,18 @@
-function App() {
+import React from 'react'
+import Portfolio from './components/Portfolio/Portfolio'
+import WebDevelopment from './pages/PortfolioPages/WebDevelopment'
+import LogoDesign from './pages/PortfolioPages/LogoDesign'
+
+const App = () => {
   return (
     <div>
-      <Navbar/>
-      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
-      <h1 className='text-blue-500'>search</h1>
-      <p className='text-red-500'>This is my first react app</p>
-      <p className='text-blue-500'>This is my first react app</p>
-      <p className='text-green-500'>This is my first react app</p>
+      <Portfolio />
+      {/* <WebDevelopment /> */}
+      {/* <LogoDesign /> */}
+      {/* Add more portfolio sections as needed */}
     </div>
   )
 }
 
 export default App
+
