@@ -1,9 +1,14 @@
-import React from 'react'
+import Navbar from '../Header/Navbar';
+import PortfolioSection from '../Portfolio/Portfolio';
 
-function Home() {
+const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      <Navbar />
+      <PortfolioSection />
+      
+    </>
+  );
+};
 
-export default Home
+export default Home;

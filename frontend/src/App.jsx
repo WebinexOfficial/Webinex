@@ -1,8 +1,25 @@
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import ClientTestimonial from './components/ClientTestimonial/ClientTestimonial';
+import OurServices from './components/OurServices/OurServices';
+import WhyChooseUs from './components/WhyChooseUs/WhyChooseUs';
+import PortfolioSection from './components/Portfolio/Portfolio';
+import LandingPage from './components/LandingPage/LandingPage';
+
+
+
 function App() {
   return (
-    <div className="bg-blue-500 text-white p-8 text-2xl font-bold">
-      Tailwind CSS is working!
-    </div>
+    <>
+     <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/client-testimonial" element={<ClientTestimonial/>} />
+      <Route path="/our-services" element={<OurServices/>} />
+      <Route path="/why-choose-us" element={<WhyChooseUs/>} />
+      <Route path="/portfolio" element={<PortfolioSection/>} />
+      <Route path="/landing-page" element={<LandingPage/>} />
+    </Routes>
+    </>
   )
 }
 
