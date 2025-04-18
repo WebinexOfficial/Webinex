@@ -1,8 +1,4 @@
-import React from 'react'
-import Navbar from './components/Header/Navbar'
-
-
-const App = () => {
+function App() {
   return (
     <div>
       <Navbar/>
