@@ -18,7 +18,7 @@ const Footer = () => {
     // },
     {
       title: "Support",
-      items: ["Submit ticket", "Documentation", "Guides"],
+      items: ["Submit ticket", "Documentation", "Guides","Sourav"],
     },
   ];
 
