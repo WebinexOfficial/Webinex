@@ -80,5 +80,5 @@ const PortfolioSection = () => {
   )
 }
 
-export default PortfolioSection
- 
+export default PortfolioSection;
+
