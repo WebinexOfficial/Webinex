@@ -1,30 +1,27 @@
 import React from 'react'
 
-const projects = [
+const voiceProjects = [
   {
-    title: 'Elegant Logo for Tech Startup',
-    image: '/logo1.jpg',
-    description: 'A sleek, modern logo with geometric elements and a minimalist typeface.',
-    tags: ['Figma', 'Illustrator', 'Brand Kit'],
+    title: 'Podcast Intro Voiceover',
+    image: '/voice1.jpg',
+    description: 'Warm and engaging tone for a lifestyle podcast.',
+    tags: ['Studio Quality', 'Narration', 'Mixing'],
   },
   {
-    title: 'Hand-drawn Logo for Organic Shop',
-    image: '/logo2.jpg',
-    description: 'Warm, earthy design made to appeal to eco-conscious shoppers.',
-    tags: ['Illustrator', 'Custom Illustration'],
+    title: 'Explainer Video Voiceover',
+    image: '/voice2.jpg',
+    description: 'Clear and professional voice for a product explainer.',
+    tags: ['Corporate', 'Sync to Video', 'Noise Removal'],
   },
-  // Add more...
 ]
 
-const LogoDesign = () => {
+const VoiceOver = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-        Logo Design Projects
-      </h1>
+      <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">Voice Over Projects</h1>
 
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
+        {voiceProjects.map((project, index) => (
           <div
             key={index}
             className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden"
@@ -55,4 +52,4 @@ const LogoDesign = () => {
   )
 }
 
-export default LogoDesign
+export default VoiceOver
