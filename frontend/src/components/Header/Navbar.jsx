@@ -195,7 +195,7 @@ export default function Navbar() {
           <Box sx={{ flexGrow: 1 }} />
           <Navigation/>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <Search sx={{backgroundColor:"#073D44",color:"grey"}}>
+          <Search sx={{border:"2px solid #073D44 ",color:"grey"}}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
