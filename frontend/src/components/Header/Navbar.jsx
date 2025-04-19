@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Navigation from './Navigation';
+import { Link } from 'react-router-dom'
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -183,8 +184,8 @@ export default function Navbar() {
   <Typography variant="button" sx={{ cursor: 'pointer' }}>
     Home
   </Typography>
-  <Typography variant="button" sx={{ cursor: 'pointer' }}>
-    Services
+  <Typography variant="button" sx={{ cursor: 'pointer' }} >
+  <Link to="/OurServices">Our Services</Link>
   </Typography>
   <Typography variant="button" sx={{ cursor: 'pointer' }}>
     Portfolio

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
 const services = [
@@ -6,42 +7,102 @@ const services = [
     title: 'Web Development',
     icon: '/icons/dev.svg',
     description: 'Custom website solutions built with modern tech.',
-    subServices: ['WordPress', 'Wix', 'Shopify', 'Code-based (React, Node.js)'],
+    subServices: [
+      { name: 'WordPress', logo: '/wordpresslogo.jpg' }, // Add your logo path
+      { name: 'Wix', logo: '/wixlogo.jpg' }, // Add your logo path
+      { name: 'Shopify', logo: '/shopify-logo.png' }, // Add your logo path
+      { name: 'Code-based (React, Node.js)', logo: '/node-logo.png' } // Add your logo path
+    ],
+    color: 'from-blue-500 to-blue-600'
   },
   {
     title: 'SEO',
     icon: '/icons/seo.svg',
     description: 'Boost visibility and drive traffic to your site.',
-    subServices: ['Google My Business Setup', 'On-page SEO', 'Off-page SEO'],
+    subServices: [
+      { name: 'Google My Business Setup', logo: '/google-logo.png' }, // Add your logo path
+      { name: 'On-page SEO', logo: '/seo-logo.png' }, // Add your logo path
+      { name: 'Off-page SEO', logo: '/linkbuilding-logo.png' } // Add your logo path
+    ],
+    color: 'from-purple-500 to-purple-600'
   },
   {
     title: 'UI/UX Design',
     icon: '/icons/uiux.svg',
     description: 'User-first design for websites and apps.',
-    subServices: ['Complete UI Design', 'Wireframes & Prototyping', 'UX Research'],
+    subServices: [
+      { name: 'Complete UI Design', logo: '/ui-logo.png' }, // Add your logo path
+      { name: 'Wireframes & Prototyping', logo: '/prototype-logo.png' }, // Add your logo path
+      { name: 'UX Research', logo: '/ux-logo.png' } // Add your logo path
+    ],
+    color: 'from-pink-500 to-pink-600'
   },
 ]
 
-const ServiceCard = ({ service, isOpen, onToggle }) => {
+const ServiceCard = ({ service, isOpen, onToggle, index }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6 transition-all hover:shadow-lg">
-      <div className="flex items-center gap-4 cursor-pointer" onClick={onToggle}>
-        <img src={service.icon} alt={service.title} className="w-10 h-10" />
-        <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900">{service.title}</h3>
-          <p className="text-sm text-gray-600">{service.description}</p>
-        </div>
-        {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-      </div>
+    <motion.div 
+      className="bg-white rounded-2xl shadow-xl overflow-hidden"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ scale: 1.02 }}
+    >
+      <div className={`bg-gradient-to-r ${service.color} p-1`}>
+        <div className="bg-white rounded-xl p-6">
+          <motion.div 
+            className="flex items-center gap-4 cursor-pointer"
+            onClick={onToggle}
+            whileTap={{ scale: 0.98 }}
+          >
+            <div className={`p-3 rounded-lg bg-gradient-to-r ${service.color}`}>
+              <img src={service.icon} alt={service.title} className="w-6 h-6 filter brightness-0 invert" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
+              <p className="text-sm text-gray-600">{service.description}</p>
+            </div>
+            {isOpen ? (
+              <ChevronUp className="w-5 h-5 text-gray-500" />
+            ) : (
+              <ChevronDown className="w-5 h-5 text-gray-500" />
+            )}
+          </motion.div>
 
-      {isOpen && (
-        <ul className="mt-4 pl-2 list-disc text-sm text-gray-700">
-          {service.subServices.map((item, idx) => (
-            <li key={idx}>{item}</li>
-          ))}
-        </ul>
-      )}
-    </div>
+          <AnimatePresence>
+            {isOpen && (
+              <motion.ul 
+                className="mt-4 space-y-3 text-sm text-gray-700"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {service.subServices.map((item, idx) => (
+                  <motion.li 
+                    key={idx}
+                    className="flex items-center pl-2"
+                    initial={{ x: -10, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 + idx * 0.05 }}
+                  >
+                    {/* Logo container - replace with your actual logo */}
+                    <div className="w-8 h-8 mr-3 flex items-center justify-center bg-gray-100 rounded-md p-1">
+                      <img 
+                        src={item.logo} 
+                        alt={`${item.name} logo`} 
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                    <span>{item.name}</span>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+    </motion.div>
   )
 }
 
@@ -53,21 +114,43 @@ const OurServices = () => {
   }
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-10">
-          Our Services
-        </h2>
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+          <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Our Services</span>
+          </motion.h2>
+          <motion.p 
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            We deliver exceptional digital solutions tailored to your business needs.
+          </motion.p>
+        </div>
+        
+        <motion.div 
+          className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
           {services.map((service, index) => (
             <ServiceCard
               key={index}
               service={service}
               isOpen={openIndex === index}
               onToggle={() => handleToggle(index)}
+              index={index}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
