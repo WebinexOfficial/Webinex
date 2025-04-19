@@ -8,10 +8,10 @@ const services = [
     icon: '/icons/dev.svg',
     description: 'Custom website solutions built with modern tech.',
     subServices: [
-      { name: 'WordPress', logo: '/wordpresslogo.jpg' }, // Add your logo path
-      { name: 'Wix', logo: '/wixlogo.jpg' }, // Add your logo path
-      { name: 'Shopify', logo: '/shopify-logo.png' }, // Add your logo path
-      { name: 'Code-based (React, Node.js)', logo: '/node-logo.png' } // Add your logo path
+      { name: 'WordPress', logo: 'public/Service Images/wordpresslogo.jpg' }, // Add your logo path
+      { name: 'Wix', logo: 'public/Service Images/wixlogo.jpg' }, // Add your logo path
+      { name: 'Shopify', logo: 'public/Service Images/shopify-logo.png' }, // Add your logo path
+      { name: 'Code-based (React, Node.js)', logo: 'public/Service Images/node-logo.png' } // Add your logo path
     ],
     color: 'from-blue-500 to-blue-600'
   },
@@ -20,9 +20,9 @@ const services = [
     icon: '/icons/seo.svg',
     description: 'Boost visibility and drive traffic to your site.',
     subServices: [
-      { name: 'Google My Business Setup', logo: '/google-logo.png' }, // Add your logo path
-      { name: 'On-page SEO', logo: '/seo-logo.png' }, // Add your logo path
-      { name: 'Off-page SEO', logo: '/linkbuilding-logo.png' } // Add your logo path
+      { name: 'Google My Business Setup', logo: 'public/Service Images/google-logo.png' }, // Add your logo path
+      { name: 'On-page SEO', logo: 'public/Service Images/seo-logo.png' }, // Add your logo path
+      { name: 'Off-page SEO', logo: 'public/Service Images/linkbuilding-logo.png' } // Add your logo path
     ],
     color: 'from-purple-500 to-purple-600'
   },
@@ -31,9 +31,9 @@ const services = [
     icon: '/icons/uiux.svg',
     description: 'User-first design for websites and apps.',
     subServices: [
-      { name: 'Complete UI Design', logo: '/ui-logo.png' }, // Add your logo path
-      { name: 'Wireframes & Prototyping', logo: '/prototype-logo.png' }, // Add your logo path
-      { name: 'UX Research', logo: '/ux-logo.png' } // Add your logo path
+      { name: 'Complete UI Design', logo: 'public/Service Images/ui-logo.png' }, // Add your logo path
+      { name: 'Wireframes & Prototyping', logo: 'public/Service Images/prototype-logo.png' }, // Add your logo path
+      { name: 'UX Research', logo: 'public/Service Images/ux-logo.png' } // Add your logo path
     ],
     color: 'from-pink-500 to-pink-600'
   },
