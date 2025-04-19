@@ -18,7 +18,9 @@ const Footer = () => {
     // },
     {
       title: "Support",
+
       items: ["Submit ticket", "Documentation", "Guides"],
+
     },
   ];
 
@@ -134,4 +136,6 @@ const Footer = () => {
   );
 };
 
+
 export default Footer;
+
