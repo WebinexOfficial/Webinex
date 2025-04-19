@@ -12,6 +12,8 @@ import WebDevelopment from './Pages/PortfolioPages/WebDevelopment';
 import SEO from './Pages/PortfolioPages/SEO';
 import Footer from './components/Footer/Footer';
 
+
+
 function App() {
   return (
     <>
