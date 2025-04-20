@@ -141,7 +141,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: '#F5F5F5', color: '#073D44', boxShadow: 'none' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#0C2228', color: '#fff', boxShadow: 'none' }}>
         <Toolbar>
           <Typography
             variant="h5"
@@ -154,12 +154,12 @@ export default function Navbar() {
 
           {/* Navigation Links */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 3, alignItems: 'center' }}>
-            <Link to="/" style={navLinkStyle}>Home</Link>
+            <Link to="/" style={navLinkStyle} >Home</Link>
             <Link to="/OurServices" style={navLinkStyle}>Our Services</Link>
             <Link to="/Portfolio" style={navLinkStyle}>Portfolio</Link>
           </Box>
 
-          <Search sx={{ display: { xs: 'none', md: 'flex' }, border: "1px solid #073D44" }}>
+          <Search sx={{ display: { xs: 'none', md: 'flex' }, border: "1px solid #fff" }}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -168,16 +168,7 @@ export default function Navbar() {
 
           {/* Icons Section */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
-            <IconButton size="large" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton size="large" color="inherit">
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            
             <IconButton
               size="large"
               edge="end"
@@ -216,7 +207,7 @@ export default function Navbar() {
 // Styled link styles
 const navLinkStyle = {
   textDecoration: 'none',
-  color: '#073D44',
+  color: '#fff',
   fontWeight: 500,
   fontSize: '1rem',
   transition: '0.3s',
