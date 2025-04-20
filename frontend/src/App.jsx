@@ -12,6 +12,7 @@ import WebDevelopment from './Pages/PortfolioPages/WebDevelopment';
 import SEO from './Pages/PortfolioPages/SEO';
 import Footer from './components/Footer/Footer';
 
+
 function App() {
   return (
     <>
@@ -27,7 +28,7 @@ function App() {
       <Route path="/portfolio/web-development" element={<WebDevelopment/>} />
       <Route path="/portfolio/seo" element={<SEO/>} />
     </Routes>
-      <Footer/>
+    <Footer/>
     </>
     );
     }
