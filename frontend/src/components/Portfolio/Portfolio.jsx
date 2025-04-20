@@ -102,16 +102,29 @@ const PortfolioSection = () => {
         </h2>
 
         <div className="relative">
-          {/* Left Navigation Button */}
+          {/* Left Navigation Button
           {queue.length > cardsToShow && (
             <button
               onClick={handleLeftClick}
-              className="absolute left-[-20px] md:left-[-40px] top-1/2 transform -translate-y-1/2 bg-[#0C2228] text-white p-3 rounded-full shadow-md z-10 hover:bg-opacity-90 flex items-center justify-center"
+              className="absolute left-[-20px] md:left-[-60px] top-1/2  w-[40px] h-[40px]    transform -translate-y-1/2 bg-[#0C2228] text-white p-3 rounded-full shadow-md z-10 hover:bg-opacity-90 flex items-center justify-center"
               aria-label="Scroll left"
             >
               &#8249;
             </button>
-          )}
+          )} */}
+          <button
+  onClick={handleLeftClick}
+  className="absolute left-[-20px] md:left-[-60px] top-1/2 w-[40px] h-[40px] 
+             transform -translate-y-1/2 bg-[#0C2228] text-white 
+             rounded-full shadow-md z-10 flex items-center justify-center 
+             hover:bg-teal-700 hover:scale-110 hover:shadow-lg 
+             transition duration-300 ease-in-out"
+  aria-label="Scroll left"
+>
+  &#8249;
+</button>
+
+
 
           {/* Cards Container */}
           <div className="flex gap-6 justify-center items-center transition-all duration-500 ease-in-out">
@@ -141,16 +154,29 @@ const PortfolioSection = () => {
             ))}
           </div>
 
-          {/* Right Navigation Button */}
+          {/* Right Navigation Button
           {queue.length > cardsToShow && (
             <button
               onClick={handleRightClick}
-              className="absolute right-[-20px] md:right-[-40px] top-1/2 transform -translate-y-1/2 bg-[#0C2228] text-white p-3 rounded-full shadow-md z-10 hover:bg-opacity-90 flex items-center justify-center"
+              className="absolute right-[-20px] md:right-[-60px] top-1/2   w-[40px] h-[40px]   transform -translate-y-1/2 bg-[#0C2228] text-white p-3 rounded-full shadow-md z-10 hover:bg-opacity-90 flex items-center justify-center"
               aria-label="Scroll right"
             >
               &#8250;
             </button>
-          )}
+          )} */}
+
+<button
+  onClick={handleRightClick}
+  className="absolute right-[-20px] md:right-[-60px] top-1/2 w-[40px] h-[40px] 
+             transform -translate-y-1/2 bg-[#0C2228] text-white 
+             rounded-full shadow-md z-10 flex items-center justify-center 
+             hover:bg-teal-700 hover:scale-110 hover:shadow-lg 
+             transition duration-300 ease-in-out"
+  aria-label="Scroll right"
+>
+  &#8250;
+</button>
+
         </div>
       </div>
     </section>
@@ -158,3 +184,5 @@ const PortfolioSection = () => {
 };
 
 export default PortfolioSection;
+
+ 

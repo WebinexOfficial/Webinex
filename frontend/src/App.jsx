@@ -11,13 +11,17 @@ import UIUXDesign from './Pages/PortfolioPages/UIUXDesign';
 import WebDevelopment from './Pages/PortfolioPages/WebDevelopment';
 import SEO from './Pages/PortfolioPages/SEO';
 import Footer from './components/Footer/Footer';
+import FloatingContactButton from './components/Fab/FloatingContactButton';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 
 function App() {
   return (
     <>
+    <ScrollToTop/>
      <Routes>
       <Route path="/" element={<Home/>} />
+
       <Route path="/client-testimonial" element={<ClientTestimonial/>} />
       <Route path="/OurServices" element={<OurServices/>} />
       <Route path="/why-choose-us" element={<WhyChooseUs/>} />
@@ -28,6 +32,7 @@ function App() {
       <Route path="/portfolio/web-development" element={<WebDevelopment/>} />
       <Route path="/portfolio/seo" element={<SEO/>} />
     </Routes>
+    <FloatingContactButton/>
     <Footer/>
     </>
     );

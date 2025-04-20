@@ -157,6 +157,7 @@ export default function Navbar() {
             <Link to="/" style={navLinkStyle} >Home</Link>
             <Link to="/OurServices" style={navLinkStyle}>Our Services</Link>
             <Link to="/Portfolio" style={navLinkStyle}>Portfolio</Link>
+            <Link to="/Portfolio" style={navLinkStyle}>ContactUs</Link>
           </Box>
 
           <Search sx={{ display: { xs: 'none', md: 'flex' }, border: "1px solid #fff" }}>
