@@ -45,10 +45,10 @@ const PortfolioSection = () => {
     <section className="py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-          Explore Our Portfolio
+          Explore Our Portfolio 
         </h2>
 
-        <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
+        <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory pt-5 ">
           {categories.map((item, index) => (
             <Link
               to={`/portfolio/${item.slug}`}
