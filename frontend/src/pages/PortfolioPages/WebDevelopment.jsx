@@ -1,72 +1,93 @@
 import React from 'react'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 const projects = [
   {
-    title: 'Modern E-Commerce Site',
-    image: '/ecommerce.jpg',
-    description: 'A responsive e-commerce platform with product filtering, payment gateway integration, and admin dashboard.',
-    link: 'https://ecommerce.example.com',
-    tags: ['React', 'Stripe', 'Firebase']
+    title: 'Credit Score App',
+    image: '/credit.png',
+    description: 'A user-friendly app to check and understand your credit score.',
+    link: 'https://creditscoreai.netlify.app/',
+    tags: ['React', 'Tailwind CSS']
   },
   {
-    title: 'Photography Portfolio',
-    image: '/photography.jpg',
-    description: 'A sleek, minimalist site for photographers with galleries and booking options.',
-    link: 'https://photography.example.com',
-    tags: ['Next.js', 'Tailwind', 'Sanity CMS']
+    title: 'E-Commerce Website',
+    image: '/ecom1.png',
+    description: 'A sleek e-commerce website for general products with modern UI and features.',
+    link: 'https://resonant-paprenjak-6ede1f.netlify.app/',
+    tags: ['React', 'Firebase']
   },
   {
-    title: 'Social Media App',
-    image: '/social.jpg',
-    description: 'A custom social media platform with messaging, posts, and notifications.',
-    link: 'https://socialmedia.example.com',
-    tags: ['MERN Stack', 'Socket.io']
+    title: 'Online Gallery',
+    image: '/gallery.png',
+    description: 'A beautiful gallery website to showcase artist work and portfolios.',
+    link: 'https://unsettle-artist.netlify.app/',
+    tags: ['React', 'CSS']
   },
-  // add more...
+  {
+    title: 'Clothing Store',
+    image: '/clothing.png',
+    description: 'An e-commerce platform dedicated to selling stylish clothing items.',
+    link: 'https://serene-cajeta-eb3be8.netlify.app/',
+    tags: ['React', 'Firebase']
+  },
+  {
+    title: 'Toy Store',
+    image: '/toys.png',
+    description: 'Fun and colorful toy e-commerce website for kids and parents.',
+    link: 'https://courageous-hotteok-2dd775.netlify.app/',
+    tags: ['React', 'JavaScript']
+  }
 ]
 
 const WebDevelopment = () => {
-  return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-        Web Development Projects
-      </h1>
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true
+  }
 
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden"
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-56 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-gray-600 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="text-xs bg-gray-100 px-2 py-1 rounded-full text-gray-800"
-                  >
-                    {tag}
-                  </span>
-                ))}
+  return (
+    <div className="bg-[#0C2228] py-8 mt-8">
+      <div className="max-w-5xl mx-auto px-4">
+        <h1 className="text-4xl font-bold text-white mb-10 text-center">
+          Web Development Projects
+        </h1>
+
+        <Slider {...settings}>
+          {projects.map((project, index) => (
+            <div key={index} className="text-white text-center px-4">
+              <div className="rounded-xl overflow-hidden shadow-lg bg-[#17292E] p-6">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-72 object-contain rounded-md mb-6"
+                />
+                <h2 className="text-2xl font-semibold mb-3">{project.title}</h2>
+                <p className="text-gray-400 mb-4">{project.description}</p>
+                <div className="flex flex-wrap justify-center gap-2 mb-4">
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className="bg-white text-black text-xs px-3 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-blue-400 hover:text-gray-300"
+                >
+                  View Project →
+                </a>
               </div>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-block text-blue-600 hover:underline font-medium"
-              >
-                View Project →
-              </a>
             </div>
-          </div>
-        ))}
+          ))}
+        </Slider>
       </div>
     </div>
   )

@@ -1,33 +1,23 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram,
-  faXTwitter,
-  faGithub,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faXTwitter, faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   // Data-driven lists to reduce repetition
   const navSections = [
-    // {
-    //   title: "Solutions",
-    //   items: ["Marketing", "Analytics", "Automation", "Commerce", "Insights"],
-    // },
     {
       title: "Support",
-
       items: ["Submit ticket", "Documentation", "Guides"],
-
     },
   ];
 
   const companySections = [
     {
       title: "Company",
-      items: ["About", "Blog", "Jobs", "conatct us"],
+      items: ["About", "Blog", "Jobs", "Contact Us"],
     },
     {
       title: "Legal",
@@ -46,8 +36,7 @@ const Footer = () => {
             className="h-8 w-auto mb-2"
           />
           <p className="text-sm text-gray-400">
-            Making the world a better place through constructing elegant
-            hierarchies.
+            Making the world a better place through constructing elegant hierarchies.
           </p>
         </div>
 
@@ -56,13 +45,22 @@ const Footer = () => {
           <div key={title}>
             <h3 className="text-lg font-semibold mb-2">{title}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              {items.map((label) => (
-                <li key={label}>
-                  <a href="#" className="hover:text-gray-300">
-                    {label}
-                  </a>
-                </li>
-              ))}
+              {items.map((label) => {
+                const pathMap = {
+                  "Submit ticket": "/submit-ticket",
+                  Documentation: "/documentation",
+                  Guides: "/guides",
+                };
+                const path = pathMap[label] || "#";
+
+                return (
+                  <li key={label}>
+                    <Link to={path} className="hover:text-gray-300">
+                      {label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}
@@ -73,13 +71,26 @@ const Footer = () => {
             <div key={title}>
               <h3 className="text-lg font-semibold mb-2">{title}</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                {items.map((label) => (
-                  <li key={label}>
-                    <a href="#" className="hover:text-gray-300">
-                      {label}
-                    </a>
-                  </li>
-                ))}
+                {items.map((label) => {
+                  const pathMap = {
+                    About: "/about",
+                    Blog: "/blog",
+                    Jobs: "/jobs",
+                    "Contact Us": "/contact",
+                    "Terms of service": "/terms",
+                    "Privacy policy": "/privacy",
+                    License: "/license",
+                  };
+                  const path = pathMap[label] || "#";
+
+                  return (
+                    <li key={label}>
+                      <Link to={path} className="hover:text-gray-300">
+                        {label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
@@ -136,6 +147,4 @@ const Footer = () => {
   );
 };
 
-
 export default Footer;
-
