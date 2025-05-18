@@ -1,3 +1,13 @@
+import About from './Pages/Footercomponents/About';
+import Blog from './Pages/Footercomponents/Blog';
+import ContactUs from './Pages/Footercomponents/ContactUs';
+import Documentation from './Pages/Footercomponents/Documentation';
+import Guides from './Pages/Footercomponents/Guides';
+import Jobs from './Pages/Footercomponents/Jobs';
+import License from './Pages/Footercomponents/License';
+import PrivacyPolicy from './Pages/Footercomponents/PrivacyPolicy';
+import SubmitTicket from './Pages/Footercomponents/SubmitTicket';
+import TermsOfService from './Pages/Footercomponents/TermsOfService';
 
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
@@ -14,30 +24,38 @@ import Footer from './components/Footer/Footer';
 import FloatingContactButton from './components/Fab/FloatingContactButton';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
-
 function App() {
   return (
     <>
-    <ScrollToTop/>
-     <Routes>
-      <Route path="/" element={<Home/>} />
-
-      <Route path="/client-testimonial" element={<ClientTestimonial/>} />
-      <Route path="/OurServices" element={<OurServices/>} />
-      <Route path="/why-choose-us" element={<WhyChooseUs/>} />
-      <Route path="/portfolio" element={<PortfolioSection/>} />
-      <Route path="/landing-page" element={<LandingPage/>} />
-      <Route path="/portfolio/logo-design" element={<LogoDesign/>} />
-      <Route path="/portfolio/ui-ux-design" element={<UIUXDesign/>} />
-      <Route path="/portfolio/web-development" element={<WebDevelopment/>} />
-      <Route path="/portfolio/seo" element={<SEO/>} />
-    </Routes>
-    <FloatingContactButton/>
-    <Footer/>
+      <ScrollToTop/>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/client-testimonial" element={<ClientTestimonial/>} />
+        <Route path="/OurServices" element={<OurServices/>} />
+        <Route path="/why-choose-us" element={<WhyChooseUs/>} />
+        <Route path="/portfolio" element={<PortfolioSection/>} />
+        <Route path="/landing-page" element={<LandingPage/>} />
+        <Route path="/portfolio/logo-design" element={<LogoDesign/>} />
+        <Route path="/portfolio/ui-ux-design" element={<UIUXDesign/>} />
+        <Route path="/portfolio/web-development" element={<WebDevelopment/>} />
+        <Route path="/portfolio/seo" element={<SEO/>} />
+        
+        {/* Footer Pages */}
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/documentation" element={<Documentation />} />
+        <Route path="/guides" element={<Guides />} />
+        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/license" element={<License />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/submit-ticket" element={<SubmitTicket />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+      </Routes>
+      <FloatingContactButton/>
+      <Footer/>
     </>
-    );
-    }
+  );
+}
 
-
-export default App
-
+export default App;
