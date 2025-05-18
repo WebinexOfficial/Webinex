@@ -77,8 +77,8 @@ const Footer = () => {
                     Blog: "/blog",
                     Jobs: "/jobs",
                     "Contact Us": "/contact",
-                    "Terms of service": "/terms",
-                    "Privacy policy": "/privacy",
+                    "Terms of service": "/terms-of-service",
+                    "Privacy policy": "/privacy-policy",
                     License: "/license",
                   };
                   const path = pathMap[label] || "#";
