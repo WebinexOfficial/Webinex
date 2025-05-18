@@ -26,7 +26,7 @@ const services = [
     ],
     color: 'from-purple-500 to-purple-600'
   },
-  {
+{
     title: 'UI/UX Design',
     icon: '/Service Images/Ui.jpeg',
     description: 'User-first design for websites and apps.',
