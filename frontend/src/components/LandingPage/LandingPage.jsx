@@ -377,7 +377,7 @@ export default function LandingPage() {
 
           {/* Service Tags */}
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 mt-4 md:mt-6 text-sm md:text-lg px-2">
-            {['website development', 'logo design', 'video editing', 'architecture & interior design'].map((service) => (
+            {['website development', 'logo design', 'seo', 'ui/us design'].map((service) => (
               <span
                 key={service}
                 className="px-3 py-1 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
