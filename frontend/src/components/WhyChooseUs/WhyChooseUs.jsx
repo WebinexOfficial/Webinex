@@ -77,55 +77,193 @@
 // }
 
 
+// import { CheckCircle, Clock, DollarSign, Users } from "lucide-react";
+
+// export default function WhyChooseUs() {
+//   return (
+//     <section className="bg-gradient-to-b from-[#e8faf4] to-[#f6fffa] text-[#222325] py-20 px-6 md:px-20">
+//       {/* Intro */}
+//       <div className="text-center max-w-2xl mx-auto mb-14">
+//         <h2 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+//           Why Partner With <span className="text-[#009e60]">Our Team?</span>
+//         </h2>
+//         <p className="text-lg md:text-xl text-[#003912] font-medium">
+//           Elevate your business with a digital presence that’s fast, affordable, and built for results.
+//         </p>
+//       </div>
+
+//       {/* Benefit Grid */}
+//       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+//         {[
+//           {
+//             icon: <DollarSign size={36} className="text-[#009e60] mb-4" />,
+//             title: "Transparent Pricing",
+//             desc: "No hidden fees. Get premium quality at a fair, predictable rate."
+//           },
+//           {
+//             icon: <Clock size={36} className="text-[#009e60] mb-4" />,
+//             title: "Lightning-Fast Delivery",
+//             desc: "We launch most projects in days, not weeks-without sacrificing quality."
+//           },
+//           {
+//             icon: <Users size={36} className="text-[#009e60] mb-4" />,
+//             title: "Dedicated Support",
+//             desc: "Direct access to your project team and ongoing post-launch help."
+//           },
+//           {
+//             icon: <CheckCircle size={36} className="text-[#009e60] mb-4" />,
+//             title: "Results-Driven",
+//             desc: "We focus on solutions that boost your leads, sales, and brand reputation."
+//           }
+//         ].map((item, i) => (
+//           <div key={i} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition text-center border border-[#e6f4ec]">
+//             {item.icon}
+//             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+//             <p className="text-base text-[#003912]">{item.desc}</p>
+//           </div>
+//         ))}
+//       </div>
+
+//       {/* Comparison Table */}
+//       <div className="overflow-x-auto mb-20">
+//         <table className="min-w-full bg-white rounded-xl overflow-hidden shadow-md">
+//           <thead className="bg-[#009e60] text-white">
+//             <tr>
+//               <th className="py-3 px-4 text-left font-semibold">Feature</th>
+//               <th className="py-3 px-4 font-semibold">Our Company</th>
+//               <th className="py-3 px-4 font-semibold">Typical Freelancers</th>
+//             </tr>
+//           </thead>
+//           <tbody className="text-[#003912]">
+//             {[
+//               ["Upfront, Honest Pricing", "✅", "❌"],
+//               ["Guaranteed Fast Delivery", "✅", "❌"],
+//               ["Unlimited Revisions", "✅", "Limited"],
+//               ["Direct Communication", "✅", "❌"],
+//               ["Post-Launch Support", "✅", "❌"],
+//               ["Proven Track Record", "✅", "Varies"]
+//             ].map(([feature, us, them], i) => (
+//               <tr key={i} className="even:bg-[#f2fdfc]">
+//                 <td className="py-3 px-4 font-medium">{feature}</td>
+//                 <td className="py-3 px-4 text-center">{us}</td>
+//                 <td className="py-3 px-4 text-center">{them}</td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+
+//       {/* Testimonial */}
+//       <div className="max-w-xl mx-auto mb-20">
+//         <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+//           <svg className="mb-4" width="40" height="40" fill="#009e60" viewBox="0 0 24 24"><path d="M7.17 6.17a7 7 0 0 1 9.9 9.9l-4.24 4.24a1 1 0 0 1-1.42 0l-4.24-4.24a7 7 0 0 1 0-9.9zm7.07 7.07a5 5 0 1 0-7.07-7.07 5 5 0 0 0 7.07 7.07z"></path></svg>
+//           <blockquote className="text-lg text-[#003912] italic mb-4">
+//             “Our website traffic and leads doubled within the first month. The team’s communication and expertise are unmatched.”
+//           </blockquote>
+//           <span className="font-semibold text-[#009e60]">- Priya Sharma, Startup Founder</span>
+//         </div>
+//       </div>
+
+//       {/* CTA */}
+//       <div className="text-center">
+//         <h3 className="text-2xl md:text-3xl font-bold mb-4">
+//           Ready for a website that works as hard as you do?
+//         </h3>
+//         <button className="bg-[#009e60] text-white px-8 py-4 rounded-xl shadow-md hover:bg-[#007a4d] transition text-lg font-semibold">
+//           Get Your Free Quote
+//         </button>
+//         <p className="text-sm text-[#003912] mt-2">
+//           No obligation. Let’s discuss your vision!
+//         </p>
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
+
+import { motion } from "framer-motion";
 import { CheckCircle, Clock, DollarSign, Users } from "lucide-react";
+
+const benefits = [
+  {
+    icon: DollarSign,
+    title: "Transparent Pricing",
+    desc: "No hidden fees. Get premium quality at a fair, predictable rate."
+  },
+  {
+    icon: Clock,
+    title: "Lightning-Fast Delivery",
+    desc: "We launch most projects in days, not weeks—without sacrificing quality."
+  },
+  {
+    icon: Users,
+    title: "Dedicated Support",
+    desc: "Direct access to your project team and ongoing post-launch help."
+  },
+  {
+    icon: CheckCircle,
+    title: "Results-Driven",
+    desc: "We focus on solutions that boost your leads, sales, and brand reputation."
+  }
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" }
+  })
+};
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-gradient-to-b from-[#e8faf4] to-[#f6fffa] text-[#222325] py-20 px-6 md:px-20">
+    <section className="bg-gradient-to-b from-[#e8faf4] to-[#f6fffa] text-[#222325] py-24 px-6 md:px-20">
       {/* Intro */}
-      <div className="text-center max-w-2xl mx-auto mb-14">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+      <motion.div 
+        className="text-center max-w-3xl mx-auto mb-16"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={fadeUp}
+      >
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight tracking-tight">
           Why Partner With <span className="text-[#009e60]">Our Team?</span>
         </h2>
         <p className="text-lg md:text-xl text-[#003912] font-medium">
           Elevate your business with a digital presence that’s fast, affordable, and built for results.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Benefit Grid */}
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-20">
-        {[
-          {
-            icon: <DollarSign size={36} className="text-[#009e60] mb-4" />,
-            title: "Transparent Pricing",
-            desc: "No hidden fees. Get premium quality at a fair, predictable rate."
-          },
-          {
-            icon: <Clock size={36} className="text-[#009e60] mb-4" />,
-            title: "Lightning-Fast Delivery",
-            desc: "We launch most projects in days, not weeks-without sacrificing quality."
-          },
-          {
-            icon: <Users size={36} className="text-[#009e60] mb-4" />,
-            title: "Dedicated Support",
-            desc: "Direct access to your project team and ongoing post-launch help."
-          },
-          {
-            icon: <CheckCircle size={36} className="text-[#009e60] mb-4" />,
-            title: "Results-Driven",
-            desc: "We focus on solutions that boost your leads, sales, and brand reputation."
-          }
-        ].map((item, i) => (
-          <div key={i} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition text-center border border-[#e6f4ec]">
-            {item.icon}
+      {/* Benefits Grid */}
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-24">
+        {benefits.map((item, i) => (
+          <motion.div
+            key={item.title}
+            className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl border border-[#e6f4ec] text-center"
+            custom={i}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <item.icon size={36} className="text-[#009e60] mb-4 mx-auto" />
             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-            <p className="text-base text-[#003912]">{item.desc}</p>
-          </div>
+            <p className="text-sm md:text-base text-[#003912]">{item.desc}</p>
+          </motion.div>
         ))}
       </div>
 
       {/* Comparison Table */}
-      <div className="overflow-x-auto mb-20">
+      <motion.div 
+        className="overflow-x-auto mb-24"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={fadeUp}
+      >
         <table className="min-w-full bg-white rounded-xl overflow-hidden shadow-md">
           <thead className="bg-[#009e60] text-white">
             <tr>
@@ -134,7 +272,7 @@ export default function WhyChooseUs() {
               <th className="py-3 px-4 font-semibold">Typical Freelancers</th>
             </tr>
           </thead>
-          <tbody className="text-[#003912]">
+          <tbody className="text-[#003912] text-sm md:text-base">
             {[
               ["Upfront, Honest Pricing", "✅", "❌"],
               ["Guaranteed Fast Delivery", "✅", "❌"],
@@ -151,31 +289,48 @@ export default function WhyChooseUs() {
             ))}
           </tbody>
         </table>
-      </div>
+      </motion.div>
 
       {/* Testimonial */}
-      <div className="max-w-xl mx-auto mb-20">
-        <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
-          <svg className="mb-4" width="40" height="40" fill="#009e60" viewBox="0 0 24 24"><path d="M7.17 6.17a7 7 0 0 1 9.9 9.9l-4.24 4.24a1 1 0 0 1-1.42 0l-4.24-4.24a7 7 0 0 1 0-9.9zm7.07 7.07a5 5 0 1 0-7.07-7.07 5 5 0 0 0 7.07 7.07z"></path></svg>
+      <motion.div
+        className="max-w-xl mx-auto mb-24"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={fadeUp}
+      >
+        <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center">
+          <svg className="mb-4" width="40" height="40" fill="#009e60" viewBox="0 0 24 24">
+            <path d="M7.17 6.17a7 7 0 0 1 9.9 9.9l-4.24 4.24a1 1 0 0 1-1.42 0l-4.24-4.24a7 7 0 0 1 0-9.9zm7.07 7.07a5 5 0 1 0-7.07-7.07 5 5 0 0 0 7.07 7.07z" />
+          </svg>
           <blockquote className="text-lg text-[#003912] italic mb-4">
             “Our website traffic and leads doubled within the first month. The team’s communication and expertise are unmatched.”
           </blockquote>
           <span className="font-semibold text-[#009e60]">- Priya Sharma, Startup Founder</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* CTA */}
-      <div className="text-center">
+      <motion.div
+        className="text-center"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={fadeUp}
+      >
         <h3 className="text-2xl md:text-3xl font-bold mb-4">
           Ready for a website that works as hard as you do?
         </h3>
-        <button className="bg-[#009e60] text-white px-8 py-4 rounded-xl shadow-md hover:bg-[#007a4d] transition text-lg font-semibold">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          className="bg-[#009e60] text-white px-8 py-4 rounded-xl shadow-md hover:bg-[#007a4d] transition text-lg font-semibold"
+        >
           Get Your Free Quote
-        </button>
+        </motion.button>
         <p className="text-sm text-[#003912] mt-2">
           No obligation. Let’s discuss your vision!
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 }

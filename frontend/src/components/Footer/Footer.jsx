@@ -16,7 +16,7 @@ const navSections = [
   {
     title: "Support",
     items: [
-      { label: "Submit Ticket", href: "#" },
+      { label: "Submit Ticket", href: "SubmitTicket" },
       { label: "Documentation", href: "#" },
       { label: "Guides", href: "#" },
     ],
@@ -27,10 +27,10 @@ const companySections = [
   {
     title: "Company",
     items: [
-      { label: "About", href: "#" },
-      { label: "Blog", href: "#" },
+      { label: "About", href: "About" },
+      { label: "Blog", href: "Blog" },
       { label: "Jobs", href: "#" },
-      { label: "Contact Us", href: "#" },
+      { label: "Contact Us", href: "contact" },
     ],
   },
   {
@@ -170,8 +170,9 @@ const Footer = () => (
           </a>
         </div>
       </div>
+      </div>
     </footer>
   );
-};
+
 
 export default Footer;
