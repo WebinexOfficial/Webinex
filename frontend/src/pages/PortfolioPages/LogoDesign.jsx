@@ -1,22 +1,33 @@
-import React from 'react'
-
-const projects = [
-  {
-    title: 'Elegant Logo for Tech Startup',
-    image: '/logo1.jpg',
-    description: 'A sleek, modern logo with geometric elements and a minimalist typeface.',
-    tags: ['Figma', 'Illustrator', 'Brand Kit'],
-  },
-  {
-    title: 'Hand-drawn Logo for Organic Shop',
-    image: '/logo2.jpg',
-    description: 'Warm, earthy design made to appeal to eco-conscious shoppers.',
-    tags: ['Illustrator', 'Custom Illustration'],
-  },
-  // Add more...
-]
+import React, { useEffect, useState } from 'react';
 
 const LogoDesign = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLogoProjects = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/logoProjects'); // 🔁 Replace with your backend endpoint
+        const data = await response.json();
+        setProjects(data);
+      } catch (error) {
+        console.error('Failed to fetch logo projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLogoProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center text-gray-700 py-20">
+        Loading logo design projects...
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
@@ -31,19 +42,19 @@ const LogoDesign = () => {
           >
             <img
               src={project.image}
-              alt={project.title}
+              alt={project.Title}
               className="w-full h-56 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              <h3 className="text-xl font-semibold mb-2">{project.Title}</h3>
               <p className="text-gray-600 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, i) => (
+                {project.tags?.split(',').map((tag, i) => (
                   <span
                     key={i}
                     className="text-xs bg-gray-100 px-2 py-1 rounded-full text-gray-800"
                   >
-                    {tag}
+                    {tag.trim()}
                   </span>
                 ))}
               </div>
@@ -52,7 +63,7 @@ const LogoDesign = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LogoDesign
+export default LogoDesign;

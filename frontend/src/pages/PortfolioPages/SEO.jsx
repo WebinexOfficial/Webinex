@@ -1,21 +1,33 @@
-import React from 'react'
-
-const seoProjects = [
-  {
-    title: 'E-commerce SEO Optimization',
-    image: '/seo1.jpg',
-    description: 'Improved keyword ranking and traffic for an electronics store.',
-    tags: ['On-page SEO', 'Keyword Research', 'Google Analytics'],
-  },
-  {
-    title: 'SEO for Travel Blog',
-    image: '/seo2.jpg',
-    description: 'Drove organic traffic up by 200% in 3 months.',
-    tags: ['Content SEO', 'Backlinking', 'Page Speed'],
-  },
-]
+import React, { useEffect, useState } from 'react';
 
 const SEO = () => {
+  const [seoProjects, setSeoProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSEOProjects = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/seoProjects'); // 🔁 Replace with actual backend endpoint
+        const data = await response.json();
+        setSeoProjects(data);
+      } catch (error) {
+        console.error('Failed to fetch SEO projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSEOProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center text-gray-700 py-20">
+        Loading SEO projects...
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">SEO Projects</h1>
@@ -28,19 +40,19 @@ const SEO = () => {
           >
             <img
               src={project.image}
-              alt={project.title}
+              alt={project.Title}
               className="w-full h-56 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              <h3 className="text-xl font-semibold mb-2">{project.Title}</h3>
               <p className="text-gray-600 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, i) => (
+                {project.tags?.split(',').map((tag, i) => (
                   <span
                     key={i}
                     className="text-xs bg-gray-100 px-2 py-1 rounded-full text-gray-800"
                   >
-                    {tag}
+                    {tag.trim()}
                   </span>
                 ))}
               </div>
@@ -49,7 +61,7 @@ const SEO = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SEO
+export default SEO;
