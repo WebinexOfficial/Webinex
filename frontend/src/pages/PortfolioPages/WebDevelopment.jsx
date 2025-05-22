@@ -41,16 +41,15 @@ const WebDevelopment = () => {
   }
 
   return (
-    <div className="bg-[#0C2228] py-8 mt-8">
+    <div className="bg-[#0C2228] py-12 font-[Inter,sans-serif]">
       <div className="max-w-5xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-white mb-10 text-center">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-12 text-center tracking-tight">
           Web Development Projects
         </h1>
-
         <Slider {...settings}>
           {projects.map((project, index) => (
-            <div key={index} className="text-white text-center px-4">
-              <div className="rounded-xl overflow-hidden shadow-lg bg-[#17292E] p-6">
+            <div key={index} className="text-white text-center px-2">
+              <div className="rounded-2xl overflow-hidden shadow-xl bg-white/10 backdrop-blur-sm p-8 mx-auto max-w-lg flex flex-col items-center">
                 <img
                   src={project.image}
                   alt={project.Title}
@@ -69,7 +68,7 @@ const WebDevelopment = () => {
                   href={project.projectLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-blue-400 hover:text-gray-300"
+                  className="inline-block mt-2 bg-[#009e60] text-white font-semibold px-6 py-2 rounded-lg hover:bg-[#007a4d] transition"
                 >
                   View Project →
                 </a>

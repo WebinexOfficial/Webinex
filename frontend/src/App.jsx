@@ -26,6 +26,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Login from './components/Login/Login';
 import Navbar from './components/Header/Navbar';
 import ProtectedRouted from './components/ProtectedRoute';
+import Signup from './components/SignUp/SignUp';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/signup" element={<Signup/>} />
         <Route path="/client-testimonial" element={<ClientTestimonial/>} />
         <Route path="/why-choose-us" element={<WhyChooseUs/>} />
         <Route path="/portfolio" element={<PortfolioSection/>} />

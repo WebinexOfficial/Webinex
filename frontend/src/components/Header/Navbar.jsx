@@ -112,7 +112,9 @@ export default function Navbar() {
       open={Boolean(anchorEl)}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem component={Link} to="/profile" onClick={handleMenuClose}>
+        Profile
+      </MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
@@ -175,9 +177,8 @@ export default function Navbar() {
           <Typography
             variant="h5"
             noWrap
-            
-            sx={{ flexGrow: 1, fontWeight: 700, letterSpacing: 1  }}
-            component={Link} to="/"
+            component="div"
+            sx={{ flexGrow: 1, fontWeight: 700, letterSpacing: 1 }}
           >
             MUI Logo
           </Typography>
@@ -216,7 +217,13 @@ export default function Navbar() {
                 <AccountCircle />
               </IconButton>
             ) : (
-              <Button variant="outlined" color="inherit" onClick={handleLogin}  component={Link} to="/login" >
+              <Button
+                variant="outlined"
+                color="inherit"
+                onClick={handleLogin}
+                component={Link}
+                to="/login"
+              >
                 Login
               </Button>
             )}

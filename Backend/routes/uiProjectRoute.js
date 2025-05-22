@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const UiProject = require('../models/UiProject');
 const catchAsync = require('../core/catchAsync');
-router.get('/uiProjects', async(req, res) => {
+router.get('/uiProject', async(req, res) => {
     const uiProjects=await uiProject.find({})        // Remeber product should be start wit capital P roduct
     res.json(uiProjects);
 

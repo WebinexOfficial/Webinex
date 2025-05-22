@@ -18,7 +18,7 @@ root.render(
         <GoogleOAuthProvider clientId={clientId}>
           <App />
         </GoogleOAuthProvider>
-      </AuthProvider>
+    </AuthProvider>
     </BrowserRouter>
   </StrictMode>
 );

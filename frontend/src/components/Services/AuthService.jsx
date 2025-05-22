@@ -15,15 +15,15 @@ const loginWithGoogle = async (credential) => {
   return res.data;
 };
 
-/**const register = async (userData) => {
-  const response = await axios.post(`${API_BASE_URL}/auth/register`, userData);
+const register = async (userData) => {
+  const response = await API.post('/auth/register', {userData});
   return response.data;
-};**/
+};
 
 const authService = {
   loginWithEmail,
   loginWithGoogle,
-  //register,
+  register,
 };
 
 export default authService;
