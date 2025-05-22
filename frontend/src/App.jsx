@@ -25,6 +25,7 @@ import FloatingContactButton from './components/Fab/FloatingContactButton';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Login from './components/Login/Login';
 import Navbar from './components/Header/Navbar';
+import ProtectedRouted from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -33,16 +34,17 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/client-testimonial" element={<ClientTestimonial/>} />
-        <Route path="/OurServices" element={<OurServices/>} />
         <Route path="/why-choose-us" element={<WhyChooseUs/>} />
         <Route path="/portfolio" element={<PortfolioSection/>} />
         <Route path="/landing-page" element={<LandingPage/>} />
-        <Route path="/portfolio/logo-design" element={<LogoDesign/>} />
-        <Route path="/portfolio/ui-ux-design" element={<UIUXDesign/>} />
-        <Route path="/portfolio/web-development" element={<WebDevelopment/>} />
-        <Route path="/portfolio/seo" element={<SEO/>} />
-        <Route path="/login" element={<Login/>} />
+
+        <Route path="/OurServices" element={<ProtectedRouted><OurServices/></ProtectedRouted>} />
+        <Route path="/portfolio/logo-design" element={<ProtectedRouted><LogoDesign/></ProtectedRouted>} />
+        <Route path="/portfolio/ui-ux-design" element={<ProtectedRouted><UIUXDesign/></ProtectedRouted>} />
+        <Route path="/portfolio/web-development" element={<ProtectedRouted><WebDevelopment/></ProtectedRouted>} />
+        <Route path="/portfolio/seo" element={<ProtectedRouted><SEO/></ProtectedRouted>} />
         
         {/* Footer Pages */}
         <Route path="/about" element={<About />} />
