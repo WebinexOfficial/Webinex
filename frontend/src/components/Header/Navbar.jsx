@@ -9,6 +9,7 @@ import {
   Badge,
   MenuItem,
   Menu,
+  Button,
 } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -57,15 +58,38 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const navLinkStyle = {
+  textDecoration: 'none',
+  color: '#fff',
+  fontWeight: 500,
+  fontSize: '1rem',
+  transition: '0.3s',
+};
+
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(
+    localStorage.getItem('auth') === 'true'
+  );
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const handleLogin = () => {
+    localStorage.setItem('auth', 'true');
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth');
+    setIsLoggedIn(false);
+    handleMenuClose();
+  };
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
@@ -77,10 +101,6 @@ export default function Navbar() {
     handleMobileMenuClose();
   };
 
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -89,11 +109,11 @@ export default function Navbar() {
       id={menuId}
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
+      open={Boolean(anchorEl)}
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -105,7 +125,7 @@ export default function Navbar() {
       id={mobileMenuId}
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
+      open={Boolean(mobileMoreAnchorEl)}
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
@@ -124,24 +144,33 @@ export default function Navbar() {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      {isLoggedIn ? (
+        <MenuItem onClick={handleProfileMenuOpen}>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <p>Profile</p>
+        </MenuItem>
+      ) : (
+        <MenuItem onClick={handleLogin}>
+          <p>Login</p>
+        </MenuItem>
+      )}
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: '#F5F5F5', color: '#073D44', boxShadow: 'none' }}>
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: '#0C2228', color: '#fff', boxShadow: 'none' }}
+      >
         <Toolbar>
           <Typography
             variant="h5"
@@ -152,46 +181,46 @@ export default function Navbar() {
             MUI Logo
           </Typography>
 
-          {/* Navigation Links */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 3, alignItems: 'center' }}>
             <Link to="/" style={navLinkStyle}>Home</Link>
             <Link to="/OurServices" style={navLinkStyle}>Our Services</Link>
             <Link to="/Portfolio" style={navLinkStyle}>Portfolio</Link>
+            <Link to="/ContactUs" style={navLinkStyle}>Contact Us</Link>
           </Box>
 
-          <Search sx={{ display: { xs: 'none', md: 'flex' }, border: "1px solid #073D44" }}>
+          <Search
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              border: '1px solid #fff',
+              borderRadius: 2,
+            }}
+          >
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
           </Search>
 
-          {/* Icons Section */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
-            <IconButton size="large" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton size="large" color="inherit">
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            {isLoggedIn ? (
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            ) : (
+              <Button variant="outlined" color="inherit" onClick={handleLogin}  component={Link} to="/login" >
+                Login
+              </Button>
+            )}
           </Box>
 
-          {/* Mobile Menu Icon */}
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -206,19 +235,8 @@ export default function Navbar() {
           </Box>
         </Toolbar>
       </AppBar>
-
       {renderMobileMenu}
       {renderMenu}
     </Box>
   );
 }
-
-// Styled link styles
-const navLinkStyle = {
-  textDecoration: 'none',
-  color: '#073D44',
-  fontWeight: 500,
-  fontSize: '1rem',
-  transition: '0.3s',
-};
-
