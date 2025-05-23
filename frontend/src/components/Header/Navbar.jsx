@@ -187,7 +187,7 @@ export default function Navbar() {
             <Link to="/" style={navLinkStyle}>Home</Link>
             <Link to="/OurServices" style={navLinkStyle}>Our Services</Link>
             <Link to="/Portfolio" style={navLinkStyle}>Portfolio</Link>
-            <Link to="/ContactUs" style={navLinkStyle}>Contact Us</Link>
+            <Link to="/contact" style={navLinkStyle}>Contact Us</Link>
           </Box>
 
           <Search
