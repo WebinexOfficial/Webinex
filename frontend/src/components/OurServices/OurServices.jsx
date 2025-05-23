@@ -343,7 +343,7 @@ const services = [
     ],
     color: 'from-[#004733] to-[#073D44]'
   },
-  {
+{
     title: 'UI/UX Design',
     icon: '/Service Images/Ui.jpeg',
     description: 'User-first design for websites and apps.',
