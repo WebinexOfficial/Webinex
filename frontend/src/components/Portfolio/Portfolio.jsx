@@ -137,18 +137,7 @@ const PortfolioSection = () => {
         </div>
 
         {/* Trusted By */}
-        <div className="flex flex-wrap gap-6 justify-center items-center mb-10">
-          <span className="text-gray-500 font-medium text-base mr-2">Trusted by:</span>
-          {clientLogos.map((logo, idx) => (
-            <img
-              src={logo}
-              alt={`Client ${idx + 1}`}
-              key={logo}
-              className="h-8 w-auto grayscale opacity-80 hover:opacity-100 transition"
-              loading="lazy"
-            />
-          ))}
-        </div>
+        
 
         {/* Carousel */}
         <div className="relative">
@@ -243,9 +232,7 @@ const PortfolioSection = () => {
           >
             View Full Portfolio
           </Link>
-          <p className="text-sm text-[#009e60] mt-2">
-            Or <Link to="/contact" className="underline hover:text-[#003912]">request a free quote</Link> for your project!
-          </p>
+           
         </div>
       </div>
     </section>

@@ -1,75 +1,84 @@
-import React from 'react'
-
-const projects = [
-  {
-    title: 'Modern E-Commerce Site',
-    image: '/ecommerce.jpg',
-    description: 'A responsive e-commerce platform with product filtering, payment gateway integration, and admin dashboard.',
-    link: 'https://ecommerce.example.com',
-    tags: ['React', 'Stripe', 'Firebase']
-  },
-  {
-    title: 'Photography Portfolio',
-    image: '/photography.jpg',
-    description: 'A sleek, minimalist site for photographers with galleries and booking options.',
-    link: 'https://photography.example.com',
-    tags: ['Next.js', 'Tailwind', 'Sanity CMS']
-  },
-  {
-    title: 'Social Media App',
-    image: '/social.jpg',
-    description: 'A custom social media platform with messaging, posts, and notifications.',
-    link: 'https://socialmedia.example.com',
-    tags: ['MERN Stack', 'Socket.io']
-  },
-  // add more...
-]
+import React, { useEffect, useState } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const WebDevelopment = () => {
-  return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-        Web Development Projects
-      </h1>
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden"
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-56 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-gray-600 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="text-xs bg-gray-100 px-2 py-1 rounded-full text-gray-800"
-                  >
-                    {tag}
-                  </span>
-                ))}
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+  };
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/webProjects'); // <-- Replace with actual backend URL
+        const data = await res.json();
+        setProjects(data);
+      } catch (err) {
+        console.error('Failed to fetch projects:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-white text-center mt-20">
+        Loading projects...
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-[#0C2228] py-12 font-[Inter,sans-serif]">
+      <div className="max-w-5xl mx-auto px-4">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-12 text-center tracking-tight">
+          Web Development Projects
+        </h1>
+        <Slider {...settings}>
+          {projects.map((project, index) => (
+            <div key={index} className="text-white text-center px-2">
+              <div className="rounded-2xl overflow-hidden shadow-xl bg-white/10 backdrop-blur-sm p-8 mx-auto max-w-lg flex flex-col items-center">
+                <img
+                  src={project.image}
+                  alt={project.Title}
+                  className="w-full h-72 object-contain rounded-md mb-6"
+                />
+                <h2 className="text-2xl font-semibold mb-3">{project.Title}</h2>
+                <p className="text-gray-400 mb-4">{project.description}</p>
+                <div className="flex flex-wrap justify-center gap-2 mb-4">
+                  {project.tags?.split(',').map((tag, i) => (
+                    <span key={i} className="bg-white text-black text-xs px-3 py-1 rounded-full">
+                      {tag.trim()}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={project.projectLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block mt-2 bg-[#009e60] text-white font-semibold px-6 py-2 rounded-lg hover:bg-[#007a4d] transition"
+                >
+                  View Project →
+                </a>
               </div>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-block text-blue-600 hover:underline font-medium"
-              >
-                View Project →
-              </a>
             </div>
-          </div>
-        ))}
+          ))}
+        </Slider>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WebDevelopment
+export default WebDevelopment;
