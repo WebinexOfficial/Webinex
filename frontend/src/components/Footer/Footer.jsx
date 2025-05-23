@@ -1,6 +1,7 @@
  
 
 import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
@@ -16,26 +17,26 @@ const navSections = [
   {
     title: "Support",
     items: [
-      { label: "Submit Ticket", href: "#" },
-      { label: "Documentation", href: "#" },
-      { label: "Guides", href: "#" },
+      { label: "Submit Ticket", to: "/submit-ticket" },
+      { label: "Documentation", to: "/documentation" },
+      { label: "Guides", to: "/guides" },
     ],
   },
   {
     title: "Company",
     items: [
-      { label: "About", href: "#" },
-      { label: "Blog", href: "#" },
-      { label: "Jobs", href: "#" },
-      { label: "Contact Us", href: "#" },
+      { label: "About", to: "/about" },
+      { label: "Blog", to: "/blog" },
+      
+      { label: "Contact Us", to: "/contact" },
     ],
   },
   {
     title: "Legal",
     items: [
-      { label: "Terms of Service", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "License", href: "#" },
+      { label: "Terms of Service", to: "/terms-of-service" },
+      { label: "Privacy Policy", to: "/privacy-policy" },
+      { label: "License", to: "/license" },
     ],
   },
 ];
@@ -102,11 +103,11 @@ const Footer = () => {
           <div key={title}>
             <h3 className="text-lg font-semibold text-[#00D8A7] mb-3">{title}</h3>
             <ul className="space-y-2 text-base text-gray-400">
-              {items.map(({ label, href }) => (
+              {items.map(({ label, to }) => (
                 <li key={label}>
-                  <a href={href} className="hover:text-white transition">
+                  <Link to={to} className="hover:text-white transition">
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -1,17 +1,15 @@
  
 
-
-
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from "react";
 
 const videoSources = [
-  './src/assets/hero-bg5.mp4',
-  './src/assets/hero-bg6.mp4',
-  './src/assets/hero-bg7.mp4',
-  './src/assets/hero-bg8.mp4'
+  "./src/assets/hero-bg5.mp4",
+  "./src/assets/hero-bg6.mp4",
+  "./src/assets/hero-bg7.mp4",
+  "./src/assets/hero-bg8.mp4",
 ];
 
-const staticImage = './src/assets/fallback1.jpg'; // Replace with actual image path
+const staticImage = "./src/assets/fallback1.jpg"; // Replace with actual image path
 
 export default function LandingPage() {
   const videoRef = useRef(null);
@@ -24,9 +22,9 @@ export default function LandingPage() {
     };
 
     handleResize(); // initial check
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -36,14 +34,16 @@ export default function LandingPage() {
     }
 
     const timer = setTimeout(() => {
-      setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoSources.length);
+      setCurrentVideoIndex(
+        (prevIndex) => (prevIndex + 1) % videoSources.length
+      );
     }, 6000); // 6 seconds interval
 
     return () => clearTimeout(timer);
   }, [currentVideoIndex, isMobile]);
 
   return (
-    <section className="relative w-full min-h-[80vh] md:min-h-[700px] overflow-hidden">
+    <section className="relative w-full min-h-[60vh] md:min-h-[700px] overflow-hidden">
       {/* Background */}
       {isMobile ? (
         <img
@@ -72,7 +72,8 @@ export default function LandingPage() {
       <div className="relative z-20 flex flex-col justify-center items-center h-full px-4 md:px-16 text-white text-center pt-24 pb-12 md:py-20">
         <div className="max-w-4xl mx-auto space-y-4 md:space-y-6 w-full">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight [text-shadow:_0_2px_8px_rgba(0,0,0,0.6)] px-2">
-            Our Freelancers<br />
+            Our Freelancers
+            <br />
             Will Take It From Here
           </h1>
 
@@ -99,22 +100,26 @@ export default function LandingPage() {
           </div>
 
           {/* Scrollable Service Tags */}
-          <div className="flex justify-center overflow-x-auto no-scrollbar gap-2 md:gap-4 mt-4 md:mt-6 text-sm md:text-lg px-2">
-            {['website development', 'logo design', 'seo', 'ui/ux design'].map((service) => (
-              <span
-                key={service}
-                className="whitespace-nowrap px-3 py-1 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
-              >
-                {service}
-              </span>
-            ))}
+          <div className="hidden md:flex justify-center overflow-x-auto no-scrollbar gap-2 md:gap-4 mt-4 md:mt-6 text-sm md:text-lg px-2">
+            {["website development", "logo design", "seo", "ui/ux design"].map(
+              (service) => (
+                <span
+                  key={service}
+                  className="whitespace-nowrap px-3 py-1 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                >
+                  {service}
+                </span>
+              )
+            )}
           </div>
 
           {/* CTA Buttons */}
           <div className="mt-8 md:mt-12 flex flex-col sm:flex-row justify-center gap-3 md:gap-6 px-2">
-            <button className="w-full sm:w-auto bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white text-sm md:text-lg px-4 py-3 md:px-8 md:py-4 rounded-xl transform hover:scale-105 transition-all border-2 border-white/30">
-              Get Free Consultation
-            </button>
+            <div className="hidden md:block">
+              <button className="w-full sm:w-auto bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white text-sm md:text-lg px-4 py-3 md:px-8 md:py-4 rounded-xl transform hover:scale-105 transition-all border-2 border-white/30">
+                Get Free Consultation
+              </button>
+            </div>
             <button className="w-full sm:w-auto border-2 border-white/50 hover:border-white/80 text-white hover:text-white/90 text-sm md:text-lg px-4 py-3 md:px-8 md:py-4 rounded-xl transform hover:scale-105 transition-all">
               Explore Work
             </button>
