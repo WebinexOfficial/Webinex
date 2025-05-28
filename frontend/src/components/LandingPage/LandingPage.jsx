@@ -3,13 +3,13 @@
 import React, { useRef, useState, useEffect } from "react";
 
 const videoSources = [
-  "./src/assets/hero-bg5.mp4",
-  "./src/assets/hero-bg6.mp4",
-  "./src/assets/hero-bg7.mp4",
-  "./src/assets/hero-bg8.mp4",
+  "https://res.cloudinary.com/dg1w52bkb/video/upload/v1748071261/hero-bg6_s2gfu6.mp4",
+  "https://res.cloudinary.com/dg1w52bkb/video/upload/v1748071248/hero-bg8_nq1qz9.mp4",
+  "https://res.cloudinary.com/dg1w52bkb/video/upload/v1748071242/hero-bg7_dtiogg.mp4",
+  "https://res.cloudinary.com/dg1w52bkb/video/upload/v1748071242/hero-bg5_rzu8kr.mp4",
 ];
 
-const staticImage = "./src/assets/fallback1.jpg"; // Replace with actual image path
+const staticImage = "/fallback.jpeg"; // Replace with actual image path
 
 export default function LandingPage() {
   const videoRef = useRef(null);
