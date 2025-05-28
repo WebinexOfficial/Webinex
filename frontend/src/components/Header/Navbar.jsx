@@ -182,7 +182,8 @@ export default function Navbar() {
           <Typography
             variant="h5"
             noWrap
-            component="div"
+           component={Link}
+                to="/"
             sx={{ flexGrow: 1, fontWeight: 700, letterSpacing: 1 }}
           >
             MUI Logo
