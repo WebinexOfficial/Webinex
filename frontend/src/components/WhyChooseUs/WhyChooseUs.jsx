@@ -311,7 +311,7 @@ export default function WhyChooseUs() {
       </motion.div>
 
       {/* CTA */}
-      <motion.div
+      {/* <motion.div
         className="text-center"
         initial="hidden"
         whileInView="show"
@@ -330,7 +330,7 @@ export default function WhyChooseUs() {
         <p className="text-sm text-[#003912] mt-2">
           No obligation. Let’s discuss your vision!
         </p>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }

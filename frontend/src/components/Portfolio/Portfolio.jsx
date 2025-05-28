@@ -224,7 +224,7 @@ const PortfolioSection = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <h3 className="text-2xl font-bold mb-3 text-gray-900">See More of Our Work</h3>
           <Link
             to="/portfolio"
@@ -233,7 +233,7 @@ const PortfolioSection = () => {
             View Full Portfolio
           </Link>
            
-        </div>
+        </div> */}
       </div>
     </section>
   );

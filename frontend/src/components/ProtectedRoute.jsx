@@ -1,13 +1,15 @@
-import { Navigate } from "react-router-dom";
+// ProtectedRoute.jsx
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children }) => {
-  const auth = localStorage.getItem("auth");  // Adjust this to your authentication logic
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  if (!auth) {
-    return <Navigate to="/login" />;  // Redirect to login if no token
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
   }
 
-  return children;  // Render children (i.e., the protected component)
+  return children;
 };
 
 export default ProtectedRoute;
