@@ -1,45 +1,49 @@
-import React, { useState } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
-import { Eye, EyeOff } from 'lucide-react';
-import authService from '../Services/AuthService';
-import { useNavigate } from 'react-router-dom';
-
+import React, { useState } from "react";
+import { GoogleLogin } from "@react-oauth/google";
+import { Eye, EyeOff } from "lucide-react";
+import authService from "../Services/AuthService";
+import { useNavigate } from "react-router-dom";
+import { login } from "../Features/AuthSlice";
+import { useDispatch } from "react-redux";
 const AuthForm = () => {
   const navigate = useNavigate();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const Dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const handleEmailLogin = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  setMessage('');
-  try {
-    const data = await authService.loginWithEmail(email, password);
-    setMessage(`Welcome ${data.user.name || 'user'}!`);
-    localStorage.setItem('token', data.token);
-    navigate('/'); // 👈 Redirect to home
-  } catch (err) {
-    setMessage(err.response?.data?.message || 'Login failed');
-  }
-  setLoading(false);
-};
-
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+    try {
+      const data = await authService.loginWithEmail(email, password);
+      setMessage(`Welcome ${data.user.name || "user"}!`);
+      localStorage.setItem("token", data.token);
+      Dispatch(login(data.user)); // ✅ update Redux
+      localStorage.setItem("token", data.token);
+      navigate("/"); // 👈 Redirect to home
+    } catch (err) {
+      setMessage(err.response?.data?.message || "Login failed");
+    }
+    setLoading(false);
+  };
 
   const handleGoogleSuccess = async (credentialResponse) => {
-  try {
-    const data = await authService.loginWithGoogle(credentialResponse.credential);
-    setMessage(`Welcome ${data.user.name || 'user'}!`);
-    localStorage.setItem('token', data.token);
-    navigate('/'); // 👈 Redirect to home
-  } catch (err) {
-    setMessage(err.response?.data?.message || 'Google login failed');
-  }
-};
-
+    try {
+      const data = await authService.loginWithGoogle(
+        credentialResponse.credential
+      );
+      setMessage(`Welcome ${data.user.name || "user"}!`);
+      Dispatch(login(data.user)); // ✅ update Redux
+      localStorage.setItem("token", data.token);
+      navigate("/");
+    } catch (err) {
+      setMessage(err.response?.data?.message || "Google login failed");
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#e8faf4] via-[#f6fffa] to-[#e8faf4] px-2">
@@ -51,7 +55,9 @@ const AuthForm = () => {
             alt="Company Logo"
             className="h-12 mb-8"
           />
-          <h2 className="text-3xl font-extrabold text-white mb-2 text-center">Welcome Back!</h2>
+          <h2 className="text-3xl font-extrabold text-white mb-2 text-center">
+            Welcome Back!
+          </h2>
           <p className="text-lg text-white/90 text-center">
             Sign in to access your dashboard and manage your projects.
           </p>
@@ -65,9 +71,17 @@ const AuthForm = () => {
 
         {/* Right Panel */}
         <div className="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-12">
-          <h2 className="text-2xl font-bold mb-2 text-gray-800 text-center">Sign in to Your Account</h2>
+          <h2 className="text-2xl font-bold mb-2 text-gray-800 text-center">
+            Sign in to Your Account
+          </h2>
           <p className="text-gray-500 text-center mb-6 text-sm">
-            New here? <a href="/signup" className="text-[#009e60] hover:underline font-medium">Create an account</a>
+            New here?{" "}
+            <a
+              href="/signup"
+              className="text-[#009e60] hover:underline font-medium"
+            >
+              Create an account
+            </a>
           </p>
           <form onSubmit={handleEmailLogin} className="space-y-4">
             <div>
@@ -83,9 +97,11 @@ const AuthForm = () => {
               />
             </div>
             <div className="relative">
-              <label className="block text-sm text-gray-600 mb-1">Password</label>
+              <label className="block text-sm text-gray-600 mb-1">
+                Password
+              </label>
               <input
-                type={showPass ? 'text' : 'password'}
+                type={showPass ? "text" : "password"}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -104,16 +120,22 @@ const AuthForm = () => {
             </div>
             <div className="flex items-center justify-between text-sm">
               <label className="flex items-center gap-2">
-                <input type="checkbox" className="accent-[#009e60]" /> Remember me
+                <input type="checkbox" className="accent-[#009e60]" /> Remember
+                me
               </label>
-              <a href="/forgot-password" className="text-[#009e60] hover:underline">Forgot password?</a>
+              <a
+                href="/forgot-password"
+                className="text-[#009e60] hover:underline"
+              >
+                Forgot password?
+              </a>
             </div>
             <button
               type="submit"
               disabled={loading}
               className="w-full bg-[#009e60] text-white py-2 rounded-lg font-semibold hover:bg-[#007a4d] transition"
             >
-              {loading ? 'Signing in...' : 'Sign In'}
+              {loading ? "Signing in..." : "Sign In"}
             </button>
           </form>
 
@@ -125,7 +147,7 @@ const AuthForm = () => {
 
           <GoogleLogin
             onSuccess={handleGoogleSuccess}
-            onError={() => setMessage('Google Login Failed')}
+            onError={() => setMessage("Google Login Failed")}
             theme="filled_blue"
             text="continue_with"
             shape="pill"
@@ -133,7 +155,9 @@ const AuthForm = () => {
             width="100%"
           />
 
-          {message && <p className="text-center text-sm text-red-600 mt-4">{message}</p>}
+          {message && (
+            <p className="text-center text-sm text-red-600 mt-4">{message}</p>
+          )}
         </div>
       </div>
     </div>

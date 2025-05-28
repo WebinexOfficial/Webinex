@@ -4,7 +4,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 const SignupPage = () => {
     const navigate = useNavigate();
- const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;  // Replace this
+ const clientId = "2219967036471-ba292n747v92ei2966jsvhr6t73t7i9b.apps.googleusercontent.com";  // Replace this
   const [formData, setFormData] = useState({
     
     email: '',

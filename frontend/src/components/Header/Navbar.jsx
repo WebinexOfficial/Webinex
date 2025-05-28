@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   AppBar,
   Box,
@@ -10,77 +10,78 @@ import {
   MenuItem,
   Menu,
   Button,
-} from '@mui/material';
-import { styled, alpha } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import { Link } from 'react-router-dom';
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
+} from "@mui/material";
+import { styled, alpha } from "@mui/material/styles";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import MailIcon from "@mui/icons-material/Mail";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import MoreIcon from "@mui/icons-material/MoreVert";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../Features/AuthSlice"; // adjust path
+import { useNavigate } from "react-router-dom";
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha('#073D44', 0.05),
-  '&:hover': {
-    backgroundColor: alpha('#073D44', 0.15),
+  backgroundColor: alpha("#073D44", 0.05),
+  "&:hover": {
+    backgroundColor: alpha("#073D44", 0.15),
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
-    width: 'auto',
+    width: "auto",
   },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  height: "100%",
+  position: "absolute",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
+  color: "inherit",
+  "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
     },
   },
 }));
 
 const navLinkStyle = {
-  textDecoration: 'none',
-  color: '#fff',
+  textDecoration: "none",
+  color: "#fff",
   fontWeight: 500,
-  fontSize: '1rem',
-  transition: '0.3s',
+  fontSize: "1rem",
+  transition: "0.3s",
 };
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [isLoggedIn, setIsLoggedIn] = React.useState(
-    localStorage.getItem('auth') === 'true'
-  );
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
 
   const handleLogin = () => {
-    localStorage.setItem('auth', 'true');
-    setIsLoggedIn(true);
+    //dispatch(login());
+    navigate("/dashboard");
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('auth');
-    setIsLoggedIn(false);
+    dispatch(logout());
     handleMenuClose();
   };
 
@@ -101,14 +102,14 @@ export default function Navbar() {
     handleMobileMenuClose();
   };
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={Boolean(anchorEl)}
       onClose={handleMenuClose}
     >
@@ -119,14 +120,14 @@ export default function Navbar() {
     </Menu>
   );
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={Boolean(mobileMoreAnchorEl)}
       onClose={handleMobileMenuClose}
     >
@@ -139,7 +140,11 @@ export default function Navbar() {
         <p>Messages</p>
       </MenuItem>
       <MenuItem>
-        <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
+        <IconButton
+          size="large"
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
           <Badge badgeContent={17} color="error">
             <NotificationsIcon />
           </Badge>
@@ -171,7 +176,7 @@ export default function Navbar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position="static"
-        sx={{ backgroundColor: '#0C2228', color: '#fff', boxShadow: 'none' }}
+        sx={{ backgroundColor: "#0C2228", color: "#fff", boxShadow: "none" }}
       >
         <Toolbar>
           <Typography
@@ -183,27 +188,50 @@ export default function Navbar() {
             MUI Logo
           </Typography>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 3, alignItems: 'center' }}>
-            <Link to="/" style={navLinkStyle}>Home</Link>
-            <Link to="/OurServices" style={navLinkStyle}>Our Services</Link>
-            <Link to="/Portfolio" style={navLinkStyle}>Portfolio</Link>
-            <Link to="/ContactUs" style={navLinkStyle}>Contact Us</Link>
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              gap: 3,
+              alignItems: "center",
+            }}
+          >
+            <Link to="/" style={navLinkStyle}>
+              Home
+            </Link>
+            <Link to="/OurServices" style={navLinkStyle}>
+              Our Services
+            </Link>
+            <Link to="/Portfolio" style={navLinkStyle}>
+              Portfolio
+            </Link>
+            <Link to="/ContactUs" style={navLinkStyle}>
+              Contact Us
+            </Link>
           </Box>
 
           <Search
             sx={{
-              display: { xs: 'none', md: 'flex' },
-              border: '1px solid #fff',
+              display: { xs: "none", md: "flex" },
+              border: "1px solid #fff",
               borderRadius: 2,
             }}
           >
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
           </Search>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
             {isLoggedIn ? (
               <IconButton
                 size="large"
@@ -229,7 +257,7 @@ export default function Navbar() {
             )}
           </Box>
 
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="show more"
