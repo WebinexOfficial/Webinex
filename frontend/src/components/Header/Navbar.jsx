@@ -1,7 +1,3 @@
- 
- 
-
-
 import * as React from "react";
 import {
   AppBar,
@@ -10,17 +6,27 @@ import {
   IconButton,
   Typography,
   Button,
-  MenuItem,
-  Menu,
-  Badge,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Divider,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Features/AuthSlice"; // adjust path
+
+const navLinks = [
+  { label: "Home", to: "/" },
+  { label: "Our Services", to: "/OurServices" },
+  { label: "Portfolio", to: "/Portfolio" },
+  { label: "Contact Us", to: "/contact" },
+];
 
 const navLinkStyle = {
   textDecoration: "none",
@@ -32,106 +38,25 @@ const navLinkStyle = {
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
 
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
   const handleLogin = () => {
-    navigate("/dashboard");
+    navigate("/login");
+    setDrawerOpen(false);
   };
 
   const handleLogout = () => {
     dispatch(logout());
-    handleMenuClose();
+    setDrawerOpen(false);
   };
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleProfile = () => {
+    navigate("/profile");
+    setDrawerOpen(false);
   };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={Boolean(anchorEl)}
-      onClose={handleMenuClose}
-    >
-      <MenuItem component={Link} to="/profile" onClick={handleMenuClose}>
-        Profile
-      </MenuItem>
-      <MenuItem onClick={handleLogout}>Logout</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={Boolean(mobileMoreAnchorEl)}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      {isLoggedIn ? (
-        <MenuItem onClick={handleProfileMenuOpen}>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="primary-search-account-menu"
-            aria-haspopup="true"
-            color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
-          <p>Profile</p>
-        </MenuItem>
-      ) : (
-        <MenuItem component={Link} to="/login" onClick={handleMobileMenuClose}>
-          <p>Login</p>
-        </MenuItem>
-      )}
-    </Menu>
-  );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -151,86 +76,129 @@ export default function Navbar() {
               letterSpacing: 1,
               color: "#fff",
               textDecoration: "none",
-              // No flexGrow here!
             }}
           >
             MUI Logo
           </Typography>
 
-          {/* Navigation links centered */}
+          {/* Navigation links centered (desktop only) */}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
               alignItems: "center",
               justifyContent: "center",
-              flexGrow: 1, // This makes the nav links Box expand and center its content
+              flexGrow: 1,
               gap: 3,
             }}
           >
-            <Link to="/" style={navLinkStyle}>
-              Home
-            </Link>
-            <Link to="/OurServices" style={navLinkStyle}>
-              Our Services
-            </Link>
-            <Link to="/Portfolio" style={navLinkStyle}>
-              Portfolio
-            </Link>
-            <Link to="/ContactUs" style={navLinkStyle}>
-              Contact Us
-            </Link>
+            {navLinks.map((link) => (
+              <Link key={link.to} to={link.to} style={navLinkStyle}>
+                {link.label}
+              </Link>
+            ))}
           </Box>
 
-          {/* Right-side buttons (Login/Profile) */}
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              alignItems: "center",
-              gap: 1,
-            }}
-          >
+          {/* Right-side buttons (desktop only) */}
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1 }}>
             {isLoggedIn ? (
-              <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+              <Button variant="outlined" color="inherit" onClick={handleLogout}>
+                Logout
+              </Button>
             ) : (
-              <Button
-                variant="outlined"
-                color="inherit"
-                onClick={handleLogin}
-                component={Link}
-                to="/login"
-              >
+              <Button variant="outlined" color="inherit" onClick={handleLogin}>
                 Login
               </Button>
             )}
           </Box>
 
-          {/* Mobile menu icon */}
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          {/* Hamburger menu (mobile only) */}
+          <Box sx={{ display: { xs: "flex", md: "none" }, ml: "auto" }}>
             <IconButton
               size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              edge="end"
               color="inherit"
+              aria-label="menu"
+              onClick={() => setDrawerOpen(true)}
             >
-              <MoreIcon />
+              <MenuIcon />
             </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        PaperProps={{
+          sx: { width: 250, backgroundColor: "#0C2228", color: "#fff" },
+        }}
+      >
+        <Box
+          sx={{
+            p: 2,
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {/* Close Button at the top */}
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <IconButton
+              onClick={() => setDrawerOpen(false)}
+              sx={{ color: "#fff" }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+
+          {/* Navigation links */}
+          <List>
+            {navLinks.map((link) => (
+              <ListItem key={link.to} disablePadding>
+                <ListItemButton
+                  component={Link}
+                  to={link.to}
+                  onClick={() => setDrawerOpen(false)}
+                >
+                  <ListItemText primary={link.label} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          {/* Top: Profile icon (if logged in) OR Login button (if not) */}
+          <Box sx={{ mb: 2 }}>
+            {isLoggedIn ? (
+              <Box sx={{ mt: "auto" }}>
+                <Divider
+                  sx={{ borderColor: "rgba(255,255,255,0.12)", my: 1 }}
+                />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  onClick={handleLogout}
+                  sx={{ fontWeight: 600, textTransform: "none" }}
+                >
+                  Logout
+                </Button>
+              </Box>
+            ) : (
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                onClick={handleLogin}
+                sx={{ fontWeight: 600, textTransform: "none" }}
+              >
+                Login
+              </Button>
+            )}
+          </Box>
+          <Divider sx={{ borderColor: "rgba(255,255,255,0.12)", mb: 1 }} />
+        </Box>
+      </Drawer>
     </Box>
   );
 }
