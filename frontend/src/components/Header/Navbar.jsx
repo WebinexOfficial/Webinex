@@ -78,7 +78,7 @@ export default function Navbar() {
               textDecoration: "none",
             }}
           >
-            MUI Logo
+          <img style={{ width:"20vh"}} src="webinex-logo.png" alt="" />
           </Typography>
 
           {/* Navigation links centered (desktop only) */}
