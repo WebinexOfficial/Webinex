@@ -27,10 +27,12 @@ import Login from './components/Login/Login';
 import Navbar from './components/Header/Navbar';
 import ProtectedRouted from './components/ProtectedRoute';
 import Signup from './components/SignUp/SignUp';
-
+import {HelmetProvider} from 'react-helmet-async'
 function App() {
+  const helmetContext={};
   return (
     <>
+    <HelmetProvider context={helmetContext}>
       <ScrollToTop/>
       <Navbar/>
       <Routes>
@@ -62,6 +64,8 @@ function App() {
       </Routes>
       <FloatingContactButton/>
       <Footer/>
+    </HelmetProvider>
+      
     </>
   );
 }

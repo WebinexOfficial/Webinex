@@ -318,7 +318,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-
+import { HelmetProvider } from 'react-helmet-async';
+import SEO from '../../Pages/Seo';
 const services = [
   {
     title: 'Web Development',
@@ -438,6 +439,18 @@ const OurServices = () => {
   };
 
   return (
+    <>
+     <SEO 
+        title="Our Freelance Services - Web Development, SEO, UI/UX & Logo Design | Webinex"
+        description="Explore Webinex's freelance services including website development, SEO, UI/UX design, and custom logos. We deliver high-quality digital solutions tailored to your needs."
+        name="@webinex_official"
+        type="website"
+        url="https://www.webinex.in/services"
+        image="https://www.webinex.in/assets/images/webinex-cover.jpg"
+        keywords="web development services, freelance SEO expert, UI UX freelancer, logo designer India, custom web solutions, SEO agency India, branding services"
+        canonical="https://www.webinex.in/services"
+        locale="en_IN"
+      />
     <section className="py-20 bg-gradient-to-b from-[#E8FAF4] to-[#f6fffa]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -472,6 +485,7 @@ const OurServices = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

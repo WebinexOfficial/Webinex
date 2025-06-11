@@ -656,7 +656,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Globe, PenTool, TrendingUp, Layout } from "lucide-react";
-
+import { HelmetProvider } from "react-helmet-async";
+import SEO from "../../Pages/Seo";
 const categories = [
   {
     title: "Website Development",
@@ -777,6 +778,15 @@ const PortfolioSection = () => {
   const handleMouseLeave = () => isLaptopView && setIsHovering(false);
 
   return (
+    <>
+    <SEO 
+  title="Portfolio - See Our Web Design & Branding Work | Webinex"
+  description="Check out our portfolio of websites, UI/UX designs, SEO results, and logos crafted for startups, businesses, and personal brands."
+  url="https://www.webinex.in/Portfolio"
+  canonical="https://www.webinex.in/Portfolio"
+  keywords="portfolio web design, ui ux case studies, seo projects, branding portfolio"
+/>
+
     <section className="py-16 bg-gradient-to-b from-[#f6fffa] to-[#e8faf4]">
       <div className="max-w-6xl mx-auto px-4 relative">
         {/* Section Heading */}
@@ -902,6 +912,7 @@ const PortfolioSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

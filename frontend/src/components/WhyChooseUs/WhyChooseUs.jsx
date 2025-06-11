@@ -185,7 +185,8 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle, Clock, DollarSign, Users } from "lucide-react";
-
+import { HelmetProvider } from "react-helmet-async";
+import SEO from "../../Pages/Seo";
 const benefits = [
   {
     icon: DollarSign,
@@ -220,6 +221,15 @@ const fadeUp = {
 
 export default function WhyChooseUs() {
   return (
+    <>
+    <SEO 
+  title="Contact Webinex - Let’s Build Something Great"
+  description="Get in touch with the Webinex freelance team for your next web development, SEO, UI/UX, or branding project. Let's grow your business together."
+  url="https://www.webinex.in/contact"
+  canonical="https://www.webinex.in/contact"
+  keywords="contact freelance developer, hire webinex, freelance web developer contact"
+/>
+
     <section className="bg-gradient-to-b from-[#e8faf4] to-[#f6fffa] text-[#222325] py-24 px-6 md:px-20">
       {/* Intro */}
       <motion.div 
@@ -332,5 +342,6 @@ export default function WhyChooseUs() {
         </p>
       </motion.div>
     </section>
+    </>
   );
 }
