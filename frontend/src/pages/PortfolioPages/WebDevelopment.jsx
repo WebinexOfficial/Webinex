@@ -19,7 +19,7 @@ const WebDevelopment = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch('http://localhost:5000/webProjects'); // <-- Change this to your actual backend URL
+        const res = await fetch('https://webcraftbackend.onrender.com/webprojects'); // <-- Replace with actual backend URL
         const data = await res.json();
         setProjects(data);
       } catch (err) {

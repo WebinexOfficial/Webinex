@@ -4,7 +4,9 @@ import { Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 const SignupPage = () => {
     const navigate = useNavigate();
- const clientId = "2219967036471-ba292n747v92ei2966jsvhr6t73t7i9b.apps.googleusercontent.com";  // Replace this
+ 
+ const clientId = "219967036471-ba292n747v92ei2966jsvhr6t73t7i9b.apps.googleusercontent.com";  // Replace this
+
   const [formData, setFormData] = useState({
     
     email: '',
@@ -29,7 +31,7 @@ const SignupPage = () => {
     }
 
     try {
-  const res = await fetch("http://localhost:5000/api/auth/register", {
+  const res = await fetch("https://webcraftbackend.onrender.com/api/auth/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

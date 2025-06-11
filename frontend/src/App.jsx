@@ -1,13 +1,25 @@
-import About from './Pages/Footercomponents/About';
-import Blog from './Pages/Footercomponents/Blog';
-import ContactUs from './Pages/Footercomponents/ContactUs';
-import Documentation from './Pages/Footercomponents/Documentation';
-import Guides from './Pages/Footercomponents/Guides';
-import Jobs from './Pages/Footercomponents/Jobs';
-import License from './Pages/Footercomponents/License';
-import PrivacyPolicy from './Pages/Footercomponents/PrivacyPolicy';
-import SubmitTicket from './Pages/Footercomponents/SubmitTicket';
-import TermsOfService from './Pages/Footercomponents/TermsOfService';
+// import About from './Pages/Footercomponents/About';
+// import Blog from './Pages/Footercomponents/Blog';
+// import ContactUs from './Pages/Footercomponents/ContactUs';
+// import Documentation from './Pages/Footercomponents/Documentation';
+// import Guides from './Pages/Footercomponents/Guides';
+// import Jobs from './Pages/Footercomponents/Jobs';
+// import License from './Pages/Footercomponents/License';
+// import PrivacyPolicy from './Pages/Footercomponents/PrivacyPolicy';
+// import SubmitTicket from './Pages/Footercomponents/SubmitTicket';
+// import TermsOfService from './Pages/Footercomponents/TermsOfService';
+
+import About from './pages/Footercomponents/About';
+import Blog from './pages/Footercomponents/Blog';
+import ContactUs from './pages/Footercomponents/ContactUs';
+import Documentation from './pages/Footercomponents/Documentation';
+import Guides from './pages/Footercomponents/Guides';
+import Jobs from './pages/Footercomponents/Jobs';
+import License from './pages/Footercomponents/License';
+import PrivacyPolicy from './pages/Footercomponents/PrivacyPolicy';
+import SubmitTicket from './pages/Footercomponents/SubmitTicket';
+import TermsOfService from './pages/Footercomponents/TermsOfService';
+
 
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
@@ -16,10 +28,15 @@ import OurServices from './components/OurServices/OurServices';
 import WhyChooseUs from './components/WhyChooseUs/WhyChooseUs';
 import PortfolioSection from './components/Portfolio/Portfolio';
 import LandingPage from './components/LandingPage/LandingPage';
-import LogoDesign from './Pages/PortfolioPages/LogoDesign';
-import UIUXDesign from './Pages/PortfolioPages/UIUXDesign';
-import WebDevelopment from './Pages/PortfolioPages/WebDevelopment';
-import SEO from './Pages/PortfolioPages/SEO';
+// import LogoDesign from './Pages/PortfolioPages/LogoDesign';
+// import UIUXDesign from './Pages/PortfolioPages/UIUXDesign';
+// import WebDevelopment from './Pages/PortfolioPages/WebDevelopment';
+// import SEO from './Pages/PortfolioPages/SEO';
+import LogoDesign from './pages/PortfolioPages/LogoDesign';
+import UIUXDesign from './pages/PortfolioPages/UiUxDesign';
+import WebDevelopment from './pages/PortfolioPages/WebDevelopment';
+import SEO from './pages/PortfolioPages/SEO';
+
 import Footer from './components/Footer/Footer';
 import FloatingContactButton from './components/Fab/FloatingContactButton';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';

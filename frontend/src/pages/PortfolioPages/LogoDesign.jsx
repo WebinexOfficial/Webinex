@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaTools } from 'react-icons/fa'; 
 
 const LogoDesign = () => {
   const [projects, setProjects] = useState([]);
@@ -33,7 +34,29 @@ const LogoDesign = () => {
       <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
         Logo Design Projects
       </h1>
-
+      <div className="max-w-xl mx-auto px-4">
+              <div className="bg-white rounded-lg shadow-md p-8 mt-6 text-center">
+                <div className="flex flex-col items-center gap-4">
+                  
+                  <FaTools className="h-16 w-16 text-gray-400" />
+      
+                  <h2 className="text-xl font-semibold text-gray-700">
+                    Page Under Development
+                  </h2>
+      
+                  <p className="text-gray-500 max-w-md">
+                    We're working hard to bring you this feature. Please check back later!
+                  </p>
+      
+                  <div className="mt-4 w-full max-w-xs bg-gray-100 rounded-full h-4">
+                    <div className="bg-blue-500 h-4 rounded-full w-3/4 animate-pulse"></div>
+                  </div>
+      
+                </div>
+              </div>
+            </div>
+      
+    
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <div
@@ -62,7 +85,11 @@ const LogoDesign = () => {
           </div>
         ))}
       </div>
+
+      
     </div>
+    
+    
   );
 };
 

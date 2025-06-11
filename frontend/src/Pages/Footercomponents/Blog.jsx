@@ -4,9 +4,8 @@ import ThemedPageLayout from "./ThemedPageLayout";
 const Blog = () => {
   return (
     <ThemedPageLayout title="Blog">
-      <p>
-        Stay up to date with our latest news, feature releases, and behind-the-scenes stories.
-      </p>
+      <p>Welcome to our blog! Stay tuned for tips, insights, and updates related to web development, SEO, design, and more.</p>
+      {/* You can add a list of blog post summaries here later */}
     </ThemedPageLayout>
   );
 };
