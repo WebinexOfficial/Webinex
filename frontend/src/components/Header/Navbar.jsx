@@ -1,7 +1,4 @@
-
-
-
-//updated navbar 
+//updated navbar
 
 import * as React from "react";
 import {
@@ -32,6 +29,7 @@ const navLinks = [
   { label: "Our Services", to: "/OurServices" },
   { label: "Portfolio", to: "/Portfolio" },
   { label: "Contact Us", to: "/contact" },
+  { label: "Website Builder", to: "/WebSiteBuilder" },
 ];
 
 const navLinkStyle = (scrolled) => ({
@@ -56,16 +54,12 @@ const ctaBtnStyle = (scrolled) => ({
   padding: "0.5rem 1.5rem",
   background: scrolled ? "#2563eb" : "#FBBF24",
   color: scrolled ? "#fff" : "#212121",
-  border: scrolled
-    ? "2px solid #2563eb"
-    : "2px solid #FBBF24",
+  border: scrolled ? "2px solid #2563eb" : "2px solid #FBBF24",
   transition: "all 0.3s",
   "&:hover": {
     background: scrolled ? "#1e40af" : "#ffe089",
     color: scrolled ? "#fff" : "#212121",
-    border: scrolled
-      ? "2px solid #1e40af"
-      : "2px solid #ffe089",
+    border: scrolled ? "2px solid #1e40af" : "2px solid #ffe089",
     boxShadow: "0 4px 24px 0 rgba(37, 99, 235, 0.10)",
   },
 });
@@ -99,7 +93,9 @@ export default function Navbar() {
   };
 
   // Swap logo for contrast
-  const logoSrc = scrolled ? "/webinex-logo-dark.png" : "/webinex-logo-dark.png";
+  const logoSrc = scrolled
+    ? "/webinex-logo-dark.png"
+    : "/webinex-logo-dark.png";
 
   return (
     <Slide in direction="down">
@@ -114,9 +110,7 @@ export default function Navbar() {
             boxShadow: scrolled
               ? "0 2px 32px 0 rgba(37, 99, 235, 0.07)"
               : "none",
-            borderBottom: scrolled
-              ? "1px solid #e5e7eb"
-              : "1px solid #1a2c32",
+            borderBottom: scrolled ? "1px solid #e5e7eb" : "1px solid #1a2c32",
             zIndex: 1201,
           }}
         >
@@ -148,7 +142,7 @@ export default function Navbar() {
                 src={logoSrc}
                 alt="Webinex"
                 style={{
-                  width: "120px",// changed size from 156 px to 120 px
+                  width: "120px", // changed size from 156 px to 120 px
                   height: "auto",
                   transition: "filter 0.3s",
                   filter: scrolled
@@ -168,20 +162,34 @@ export default function Navbar() {
                 justifyContent: "center",
               }}
             >
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  style={navLinkStyle(scrolled)}
-                  className={
-                    scrolled
-                      ? "hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200"
-                      : "hover:bg-gray-900 hover:text-yellow-400 transition-colors duration-200"
-                  }
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                if (link.label === "Website Builder") {
+                  return (
+                    <Button
+                      key={link.to}
+                      component={Link}
+                      to={link.to}
+                      sx={ctaBtnStyle(scrolled)}
+                    >
+                      {link.label}
+                    </Button>
+                  );
+                }
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    style={navLinkStyle(scrolled)}
+                    className={
+                      scrolled
+                        ? "hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200"
+                        : "hover:bg-gray-900 hover:text-yellow-400 transition-colors duration-200"
+                    }
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </Box>
 
             {/* Right-side button(s) (desktop only) */}
@@ -298,9 +306,7 @@ export default function Navbar() {
             <Box sx={{ mt: "auto", mb: 2 }}>
               <Divider
                 sx={{
-                  borderColor: scrolled
-                    ? "#e5e7eb"
-                    : "rgba(255,255,255,0.12)",
+                  borderColor: scrolled ? "#e5e7eb" : "rgba(255,255,255,0.12)",
                   my: 1,
                 }}
               />
@@ -340,5 +346,3 @@ export default function Navbar() {
     </Slide>
   );
 }
-
- 

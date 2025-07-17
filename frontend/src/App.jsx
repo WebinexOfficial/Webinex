@@ -19,6 +19,7 @@ import License from './pages/Footercomponents/License';
 import PrivacyPolicy from './pages/Footercomponents/PrivacyPolicy';
 import SubmitTicket from './pages/Footercomponents/SubmitTicket';
 import TermsOfService from './pages/Footercomponents/TermsOfService';
+import WebSiteBuilder from './Feature1/WebSiteBuilder.jsx';
 
 
 import { Routes, Route } from 'react-router-dom';
@@ -78,6 +79,11 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/submit-ticket" element={<SubmitTicket />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+
+        {/* Protected Route for Website Builder */}
+        <Route path="/WebSiteBuilder" element={<WebSiteBuilder />} />
+
+        {/* Catch-all route for 404 */}
       </Routes>
       <FloatingContactButton/>
       <Footer/>
