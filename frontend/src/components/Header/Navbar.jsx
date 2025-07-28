@@ -94,8 +94,8 @@ export default function Navbar() {
 
   // Swap logo for contrast
   const logoSrc = scrolled
-    ? "/webinex-logo-dark.png"
-    : "/webinex-logo-dark.png";
+    ? "/webinexlogo.png"
+    : "/webinexlogo.png";
 
   return (
     <Slide in direction="down">
@@ -142,7 +142,7 @@ export default function Navbar() {
                 src={logoSrc}
                 alt="Webinex"
                 style={{
-                  width: "120px", // changed size from 156 px to 120 px
+                  width: "150px", // changed size from 120 to 150px
                   height: "auto",
                   transition: "filter 0.3s",
                   filter: scrolled
