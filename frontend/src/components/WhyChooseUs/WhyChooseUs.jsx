@@ -50,11 +50,11 @@ const reviews = [
     quote: "The communication was clear, and our organic traffic grew by 3x in 60 days.",
   },
   {
-    name: "Sara Lee",
-    avatar: "/avatars/sara.jpg",
-    role: "Creative Director, BloomCo",
+    name: "PackagingDepot",
+    avatar: "/Packaging-Depot-Logo.png",
+    role: "Founder",
     
-    quote: "Loved the attention to detail and the smooth project process. Would recommend to anyone.",
+    quote: "webinex deliver high quality websites in very short time",
   },
 ];
 
